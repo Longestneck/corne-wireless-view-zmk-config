@@ -8,6 +8,9 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
+&mt {
+};
+
 / {
     macros {
         alt_tab: alt_tab {
@@ -25,7 +28,21 @@
             #binding-cells = <0>;
             bindings = <&kp BACKSPACE>, <&kp LC(BACKSPACE)>;
 
-            tapping-term-ms = <250>;
+            tapping-term-ms = <100>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        alttabcombo {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <38 0>;
+        };
+
+        whole-word-backspace {
+            bindings = <&kp LC(BACKSPACE)>;
+            key-positions = <39 11>;
         };
     };
 
@@ -41,10 +58,10 @@
 
             display-name = "Base";
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R            &kp T                 &kp Y      &kp U  &kp I      &kp O    &kp P     &taptap
-&kp LCTRL  &kp A  &kp S  &kp D     &mt LC(LS(C)) F  &mt LC(LS(V)) G       &kp H      &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V            &mt LG(LS(S)) B       &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                         &kp LGUI  &mo 1            &mt LEFT_ALT SPACE    &kp SPACE  &mo 2  &tog 3
+&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y      &kp U  &kp I      &kp O    &kp P     &kp BACKSPACE
+&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H      &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
+                         &kp LGUI  &mo 1  &kp SPACE    &kp SPACE  &mo 2  &tog 3
             >;
         };
 
@@ -57,10 +74,10 @@
 
             display-name = "Lower";
             bindings = <
-&kp GRAVE         &kp N1        &kp N2        &kp N3        &trans  &kp ESCAPE    &bt BT_PRV  &bt BT_NXT  &bt BT_CLR  &trans          &kp UP    &kp BSPC
-&kp LEFT_CONTROL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans        &tog 1      &tog 2      &tog 3      &kp LEFT_ARROW  &kp DOWN  &kp RIGHT_ARROW
-&kp LSHFT         &kp N7        &kp NUMBER_8  &kp N9        &kp N0  &trans        &trans      &trans      &trans      &trans          &trans    &kp RIGHT_SHIFT
-                                              &kp LGUI      &to 0   &kp ENTER     &kp RET     &mo 2       &to 3
+&kp GRAVE         &kp N1        &kp N2        &kp N3        &trans     &kp ESCAPE       &bt BT_PRV    &bt BT_NXT    &bt BT_CLR    &trans          &kp UP    &kp BSPC
+&kp LEFT_CONTROL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LC(C)  &kp LC(V)        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &kp LEFT_ARROW  &kp DOWN  &kp RIGHT_ARROW
+&kp LSHFT         &kp N7        &kp NUMBER_8  &kp N9        &kp N0     &kp LG(LS(S))    &trans        &trans        &trans        &trans          &trans    &kp RIGHT_SHIFT
+                                              &kp LGUI      &to 0      &kp ENTER        &kp RET       &mo 2         &to 3
             >;
         };
 
